@@ -14,8 +14,8 @@ public class Exhibit {
 
     private String name;
 
-    @NotEmpty
-    private String exhibition;
+    @ManyToOne
+    private Exhibition exhibition;
 
     @OneToMany
     private List<Notification> notifications = new ArrayList<>();
@@ -39,11 +39,11 @@ public class Exhibit {
         this.name = name;
     }
 
-    public String getExhibition() {
+    public Exhibition getExhibition() {
         return exhibition;
     }
 
-    public void setExhibition(String exhibition) {
+    public void setExhibition(Exhibition exhibition) {
         this.exhibition = exhibition;
     }
 

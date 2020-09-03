@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity(name = "users")
 public class User {
@@ -15,15 +16,18 @@ public class User {
     private Long id;
 
     @NotEmpty
+    @Size(min = 2, max = 20)
     private String name;
 
     @NotEmpty
+    @Size(min=2, max = 50)
     private String surname;
 
     @Email
     private String email;
 
     @NotEmpty
+    @Size(min = 5, max=20)
     private String password;
 
     @NotEmpty
