@@ -4,23 +4,23 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "exhibitions")
+@Entity
 public class Exhibition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "exhibition", fetch = FetchType.EAGER)
     private List<Exhibit> exhibits = new ArrayList<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -7,12 +7,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-@Entity(name = "notifications")
+@Entity
 public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotEmpty
     private String department;
@@ -24,6 +24,7 @@ public class Notification {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "exhibit")
     private Exhibit exhibit;
 
     @CreationTimestamp
@@ -33,11 +34,11 @@ public class Notification {
     public Notification() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

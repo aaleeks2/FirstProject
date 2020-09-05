@@ -9,8 +9,7 @@
 <table>
         <c:forEach items="${exhibitions}" var="exhibition">
             <tr>
-<%--            TODO linkacz do listy eksponatow--%>
-            <td>${exhibition.name}</td>
+                <td><a href="/exhibitions/exhibits?exhibitionName=${exhibition.name}">${exhibition.name}</a></td>
             </tr>
         </c:forEach>
 </table>

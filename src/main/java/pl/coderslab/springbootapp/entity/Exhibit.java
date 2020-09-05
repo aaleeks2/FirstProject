@@ -5,29 +5,30 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "exhibits")
+@Entity
 public class Exhibit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "exhibition")
     private Exhibition exhibition;
 
-    @OneToMany
+    @OneToMany(mappedBy = "exhibit", fetch = FetchType.EAGER)
     private List<Notification> notifications = new ArrayList<>();
 
     public Exhibit() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
