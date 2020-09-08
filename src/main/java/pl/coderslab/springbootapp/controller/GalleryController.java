@@ -68,6 +68,6 @@ public class GalleryController {
 
     @ModelAttribute("departments")
     public List<String> departments(){
-        return Arrays.asList("Warsztat", "IT");
+        return Arrays.asList("workshop", "it");
     }
 }

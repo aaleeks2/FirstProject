@@ -31,7 +31,7 @@ public class Notification {
     private Exhibit exhibit;
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
     public Notification() {
