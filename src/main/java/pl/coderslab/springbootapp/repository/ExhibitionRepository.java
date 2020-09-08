@@ -10,7 +10,5 @@ import java.util.List;
 public interface ExhibitionRepository extends JpaRepository<Exhibition, Long> {
 
     List<Exhibition> findAll();
-
-    @Query("select e from Exhibition e where e.name=?1")
     Exhibition findByName(String exhibitionName);
 }

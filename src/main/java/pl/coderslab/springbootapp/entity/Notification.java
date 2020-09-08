@@ -1,5 +1,6 @@
 package pl.coderslab.springbootapp.entity;
 
+import jdk.jfr.BooleanFlag;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -22,6 +23,8 @@ public class Notification {
 
     @Size(max = 155)
     private String description;
+
+    private boolean taken;
 
     @ManyToOne
     @JoinColumn(name = "exhibit")
@@ -80,6 +83,14 @@ public class Notification {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public boolean isTaken() {
+        return taken;
+    }
+
+    public void setTaken(boolean taken) {
+        this.taken = taken;
     }
 
     @Override

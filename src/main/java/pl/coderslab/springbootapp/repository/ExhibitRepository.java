@@ -12,4 +12,7 @@ public interface ExhibitRepository extends JpaRepository<Exhibit, Long> {
 
     @Query("select e from Exhibit e where e.exhibition.name=:name ")
     List<Exhibit> findAllByExhibitionName(@Param("name") String exhibitionName);
+
+    @Query
+    Exhibit findByName(String exhibitName);
 }

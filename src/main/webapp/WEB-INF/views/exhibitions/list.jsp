@@ -9,7 +9,7 @@
 <table>
         <c:forEach items="${exhibitions}" var="exhibition">
             <tr>
-                <td><a href="/exhibitions/exhibits?exhibitionName=${exhibition.name}">${exhibition.name}</a></td>
+                <td><a href="/gallery/exhibits?exhibitionName=${exhibition.name}">${exhibition.name}</a></td>
             </tr>
         </c:forEach>
 </table>
