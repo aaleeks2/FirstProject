@@ -5,6 +5,7 @@
     <title>Notification list</title>
 </head>
 <body>
+<jsp:include page="../common/cap.jsp"/>
 <h2>Workshop notification list</h2>
 <table>
     <%--    TODO - have to create function, which will be granting acces to certain pages whether its workshop or IT--%>

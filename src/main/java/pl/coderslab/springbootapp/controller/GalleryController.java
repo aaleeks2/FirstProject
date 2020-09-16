@@ -43,8 +43,10 @@ public class GalleryController {
     String notificationForm(Model model, @RequestParam("exhibitName") String exhibitName,
                             @RequestParam("exhibitionName") String exhibitionName){
         Exhibit exhibit = exhibitRepository.findByName(exhibitName);
+        List<Notification> notificationsHistory = notificationRepository.findAllByExhibit(exhibitName);
         Notification notification = new Notification();
         notification.setExhibit(exhibit);
+        model.addAttribute("notificationHistory", notificationsHistory);
         model.addAttribute("exhibitionName", exhibitionName);
         model.addAttribute("exhibit", exhibit);
         model.addAttribute("notification", notification);

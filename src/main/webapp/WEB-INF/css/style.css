@@ -1,0 +1,11 @@
+.flex-container{
+    border-style: groove;
+    border-color: black;
+    position: center;
+}
+#notificationHistory{
+    padding-right: 200px;
+    border-color: black;
+    border-style: groove;
+    background-color: bisque;
+}

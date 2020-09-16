@@ -3,9 +3,14 @@
 <html>
 <head>
     <title>Choose exhibition</title>
+    <style type="text/css">
+        <%@include file="../../css/style.css" %>
+    </style>
 </head>
 <body>
+<jsp:include page="../common/cap.jsp"/>
 <h2>Wybierz galerię</h2>
+
 <table>
         <c:forEach items="${exhibitions}" var="exhibition">
             <tr>

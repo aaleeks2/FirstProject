@@ -1,14 +1,12 @@
 package pl.coderslab.springbootapp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id
@@ -23,15 +21,24 @@ public class User {
     @Size(min=2, max = 50)
     private String surname;
 
+    @NotEmpty
+    @Size(min=2, max=15)
+    private String username;
+
     @Email
     private String email;
 
+    private int enabled;
+
     @NotEmpty
-    @Size(min = 5, max=20)
+    @Size(min = 5, max=255)
     private String password;
 
     @NotEmpty
     private String department;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Role> authorities;
 
     public long getId() {
         return id;
@@ -79,6 +86,30 @@ public class User {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
     }
 
     @Override

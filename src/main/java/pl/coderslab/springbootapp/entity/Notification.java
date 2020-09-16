@@ -25,6 +25,7 @@ public class Notification {
     private String description;
 
     private boolean taken;
+    private boolean closed;
 
     @ManyToOne
     @JoinColumn(name = "exhibit")
@@ -91,6 +92,14 @@ public class Notification {
 
     public void setTaken(boolean taken) {
         this.taken = taken;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 
     @Override

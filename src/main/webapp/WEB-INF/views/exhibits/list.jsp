@@ -5,6 +5,7 @@
     <title>Choose exhibit</title>
 </head>
 <body>
+<jsp:include page="../common/cap.jsp"/>
 <h3><a href="/gallery/exhibitions">Wróć</a></h3>
 <h2>${exhibition.name}</h2>
 <table>

@@ -18,8 +18,8 @@ public class NotificationController {
     @Autowired
     private NotificationRepository notificationRepository;
 
-//    TODO - granting access for workshop emplyees only
-    @GetMapping(path = "/list/it", produces = "test/plain; charset=UTF-8")
+//    TODO - granting access for workshop employees only
+    @GetMapping(path = "/it/list", produces = "test/plain; charset=UTF-8")
     String notificationsListIT(Model model){
         String department = "IT";
         List<Notification> notificationsIT = notificationRepository.findAllByDepartment(department);
@@ -28,7 +28,7 @@ public class NotificationController {
     }
 
     // TODO - granting access for IT employees only
-    @GetMapping(path = "/list/workshop", produces = "text/plain; charset=utf-8")
+    @GetMapping(path = "/workshop/list", produces = "text/plain; charset=utf-8")
     String notificationListWorkshop(Model model){
         String department = "workshop";
         List<Notification> notificationsWorkshop = notificationRepository.findAllByDepartment(department);
@@ -43,6 +43,20 @@ public class NotificationController {
         Notification notification = notificationRepository.findById(id).get();
         model.addAttribute("notification", notification);
         return "notification/details";
+    }
+
+    @GetMapping(path = "/it/taken")
+    String notificationItTaken(@RequestParam("notId") long id, Model model){
+        Notification notification = notificationRepository.findById(id).get();
+        notification.setTaken(true);
+        return "redirect:/notification/it/list";
+    }
+
+    @GetMapping(path = "/workshop/taken")
+    String notificationWorkshopTaken(@RequestParam("notId") long id, Model model){
+        Notification notification = notificationRepository.findById(id).get();
+        notification.setTaken(true);
+        return "redirect:/notification/workshop/list";
     }
 
 }
