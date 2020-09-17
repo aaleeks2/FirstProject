@@ -15,31 +15,23 @@
     <div class="flex-container">
         <table>
         <tr>
-            <td>
-                ${notification.id}
-            </td>
+            <td>${notification.id}</td>
+        </tr>
+        <tr>
+            <td>${notification.type}</td>
+        </tr>
+        <tr>
+            <td>${notification.created}</td>
+        </tr>
+        <tr>
+            <td><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></td>
         </tr>
         <tr>
             <td>
-                ${notification.exhibit.name}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                ${notification.created}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="/notification/details?notificationId=${notification.id}">Szczegóły</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${notification.taken == true}">
+                <c:if test="${notification.taken == 1 && notification.closed != 1}">
                     <div style="color: green">Zgłoszenie przejęte</div>
                 </c:if>
-                <c:if test="${notification.closed == true}">
+                <c:if test="${notification.closed == 1}">
                     <div style="background-color: green; color: black">Zgłoszenie zamknięte</div>
                 </c:if>
             </td>

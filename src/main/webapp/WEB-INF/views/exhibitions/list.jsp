@@ -10,13 +10,10 @@
 <body>
 <jsp:include page="../common/cap.jsp"/>
 <h2>Wybierz galerię</h2>
-
-<table>
+<ul id="exhibitionList">
         <c:forEach items="${exhibitions}" var="exhibition">
-            <tr>
-                <td><a href="/gallery/exhibits?exhibitionName=${exhibition.name}">${exhibition.name}</a></td>
-            </tr>
+            <li><a href="/gallery/exhibits?exhibitionName=${exhibition.name}">${exhibition.name}</a></li>
         </c:forEach>
-</table>
+</ul>
 </body>
 </html>

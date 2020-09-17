@@ -14,4 +14,14 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 
     @Query("select n from Notification n where n.exhibit.name=?1")
     List<Notification> findAllByExhibit(String exhibitName);
+
+    @Query("select n from Notification n where n.closed=0 and n.department=?1")
+    List<Notification> findAllByDepartmentNotClosed(String department);
+
+    @Query("select n from Notification n order by n.created desc")
+    List<Notification> findAllByCreated();
+
+    @Query("select e.notifications from Notification n join n.exhibit e group by e.name order by count(n.exhibit) desc")
+    List<Notification> findAllExhibitsByCount();
+
 }

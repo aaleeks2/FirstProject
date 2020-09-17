@@ -63,6 +63,13 @@ public class GalleryController {
         return "exhibits/list";
     }
 
+    @GetMapping("/ranking")
+    String mostReportedExhibits(Model model){
+        List<Notification> exhibits = notificationRepository.findAllExhibitsByCount();
+        model.addAttribute("rankingExhibits", exhibits);
+        return "exhibits/ranking";
+    }
+
     @ModelAttribute("exhibitions")
     public List<Exhibition> exhibitions(){
         return exhibitionRepository.findAll();
@@ -71,5 +78,10 @@ public class GalleryController {
     @ModelAttribute("departments")
     public List<String> departments(){
         return Arrays.asList("workshop", "it");
+    }
+
+    @ModelAttribute("notificationTypes")
+    public List<String> notificationTypes(){
+        return Arrays.asList("Nie działa ekran", "Wada konstrukcyjna", "Brak zasilania", "Uszkodzony eksponat", "Inne");
     }
 }

@@ -51,6 +51,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").anonymous()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/gallery/**").hasRole("user")
+                .antMatchers("/notification/history").authenticated()
                 .antMatchers("/notification/it/**").hasRole("it")
                 .antMatchers("/notification/workshop/**").hasRole("workshop")
                 .anyRequest().authenticated()

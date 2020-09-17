@@ -3,6 +3,9 @@
 <html>
 <head>
     <title>Notification list</title>
+    <style type="text/css">
+        <%@include file="../../css/style.css" %>
+    </style>
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
@@ -11,9 +14,25 @@
     <%--    TODO - have to create function, which will be granting acces to certain pages whether its workshop or IT--%>
     <c:forEach items="${notificationsWorkshop}" var="notification">
         <tr>
+            <td>${notification.id}</td>
+        </tr>
+        <tr>
+            <td>${notification.type}</td>
+        </tr>
+        <tr>
+            <td>${notification.created}</td>
+        </tr>
+        <tr>
+            <td><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></td>
+        </tr>
+        <tr>
             <td>
-                    ${notification.id}  ||   ${notification.type}   ||  ${notification.created}
-                <a href="/notification/details?notificationId=${notification.id}">Szczegóły</a>
+                <c:if test="${notification.taken == 1}">
+                    <div style="color: green">Zgłoszenie przejęte</div>
+                </c:if>
+                <c:if test="${notification.closed == 1}">
+                    <div style="background-color: green; color: black">Zgłoszenie zamknięte</div>
+                </c:if>
             </td>
         </tr>
     </c:forEach>

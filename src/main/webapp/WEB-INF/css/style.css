@@ -9,3 +9,107 @@
     border-style: groove;
     background-color: bisque;
 }
+#logoutBtn{
+    display: inline;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.capSpan{
+    font-weight: bold;
+    color: crimson;
+}
+
+#historyTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#historyTable td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#historyTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#historyTable tr:hover {background-color: #ddd;}
+
+#historyTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#exhibitionList{
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ddd;
+}
+#exhibitionList li{
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+}
+#exhibitionList li:last-child {
+    border-bottom: none
+}
+
+#userDiv{
+    display: inline;
+}
+
+#nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+#nav li{
+    float: left;
+}
+#nav li a{
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#nav li form{
+    position: center;
+    display: block;
+}
+.plainText{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+#nav li a:hover{
+    background-color: #111111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+#loginDiv{
+    padding: 16px;
+}
+
+#loginDiv input[type=text], input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+}

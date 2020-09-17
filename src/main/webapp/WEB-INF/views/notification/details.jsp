@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,16 +28,21 @@
     <tr>
         <td>Opis usterki: ${notification.description}</td>
     </tr>
-    <tr>
-        <td><a id="imageLink" href="notification/details/images">Zdjęcia</a></td>
-    </tr>
-    <tr>
-<%--TODO - create function in js/buttonScript.js which is going to put information when notification is taken--%>
-        <td><a href="/notification/${notification.department}/taken?notId=${notification.id}">Przyjmij</a></td>
-    </tr>
-    <tr>
-        <td><button id="doneBtn" hidden>Gotowe</button></td>
-    </tr>
+    <c:if test="${notification.taken == 0}">
+        <tr>
+            <td><a id="takeLink" href="/notification/${notification.department}/taken?notId=${notification.id}" onclick="function x() {
+              var takeLink = $('#takeLink');
+              takeLink.hide();
+            }">Przyjmij</a></td>
+        </tr>
+    </c:if>
+    <c:if test="${notification.taken == 1}">
+        <tr>
+            <td>
+                <a href="/notification/${notification.department}/close?notId=${notification.id}" onclick="confirm('Zamknij zgłoszenie')">ZAMKNIJ</a>
+            </td>
+        </tr>
+    </c:if>
 </table>
 </div>
 </body>

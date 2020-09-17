@@ -30,15 +30,14 @@ public class User {
 
     private int enabled;
 
+    private int phoneNumber;
+
     @NotEmpty
     @Size(min = 5, max=255)
     private String password;
 
     @NotEmpty
     private String department;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Role> authorities;
 
     public long getId() {
         return id;
@@ -104,12 +103,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Set<Role> getAuthorities() {
-        return authorities;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setAuthorities(Set<Role> authorities) {
-        this.authorities = authorities;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

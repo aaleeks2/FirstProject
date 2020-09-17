@@ -1,8 +1,6 @@
 package pl.coderslab.springbootapp.entity;
 
-import jdk.jfr.BooleanFlag;
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -22,10 +20,11 @@ public class Notification {
     private String type;
 
     @Size(max = 155)
+    @NotEmpty
     private String description;
 
-    private boolean taken;
-    private boolean closed;
+    private int taken;
+    private int closed;
 
     @ManyToOne
     @JoinColumn(name = "exhibit")
@@ -86,19 +85,20 @@ public class Notification {
         this.created = created;
     }
 
-    public boolean isTaken() {
+    public int getTaken() {
         return taken;
     }
 
-    public void setTaken(boolean taken) {
+    public void setTaken(int taken) {
         this.taken = taken;
     }
 
-    public boolean isClosed() {
+
+    public int getClosed() {
         return closed;
     }
 
-    public void setClosed(boolean closed) {
+    public void setClosed(int closed) {
         this.closed = closed;
     }
 

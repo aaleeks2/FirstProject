@@ -2,19 +2,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Choose exhibit</title>
+    <title>Ranking</title>
     <style type="text/css">
         <%@include file="../../css/style.css" %>
     </style>
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
-<h3><a href="/gallery/exhibitions">Wróć</a></h3>
-<h2>${exhibition.name}</h2>
 <table>
-    <c:forEach items="${exhibitsOfExhibition}" var="exhibit" >
+    <tr>
+        <th>Nazwa</th>
+        <th>Ilość zgłoszeń</th>
+    </tr>
+    <c:forEach items="${rankingExhibits}" var="notification">
         <tr>
-            <td>${exhibit.id}   ||  ${exhibit.name}     <a href="/gallery/notification?exhibitName=${exhibit.name}&exhibitionName=${exhibition.name}">Zgłoś</a></td>
+            <td>${notification.exibit.name}</td>
+            <td>${notification.exhibit}</td>
         </tr>
     </c:forEach>
 </table>

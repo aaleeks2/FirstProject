@@ -3,17 +3,23 @@
 <html>
 <head>
     <title>index page</title>
+    <style type="text/css">
+        <%@include file="../../css/style.css" %>
+    </style>
 </head>
 <body>
 <jsp:include page="cap.jsp"/>
 <sec:authorize access="hasRole('user')">
-<a href="/gallery/exhibitions">Lista galerii</a>
+    <div><a href="/gallery/exhibitions">Lista galerii</a></div>
+    <div><a href="/gallery/ranking">Ranking najczęściej zgłaszanych eksponatów</a></div>
 </sec:authorize>
 <sec:authorize access="hasRole('it')">
-    <a href="/notification/it/list">List zgłoszeń IT</a>
+    <div><a href="/notification/it/list">List zgłoszeń IT</a></div>
+    <div><a href="/notification/history">Historia zgłoszeń</a></div>
 </sec:authorize>
 <sec:authorize access="hasRole('workshop')">
-    <a href="/notification/workshop/list">List zgłoszeń Warsztat</a>
+    <div><a href="/notification/workshop/list">List zgłoszeń Warsztat</a></div>
+    <div><a href="/notification/history">Historia zgłoszeń</a></div>
 </sec:authorize>
 </body>
 </html>
