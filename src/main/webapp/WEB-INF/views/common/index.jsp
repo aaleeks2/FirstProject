@@ -10,16 +10,32 @@
 <body>
 <jsp:include page="cap.jsp"/>
 <sec:authorize access="hasRole('user')">
-    <div><a href="/gallery/exhibitions">Lista galerii</a></div>
-    <div><a href="/gallery/ranking">Ranking najczęściej zgłaszanych eksponatów</a></div>
+    <div class="container">
+        <img src="../../img/warszawa-centrum-nauki-kopernik.jpg">
+        <a href="/gallery/exhibitions" id="imgBtn">Lista galerii</a>
+    </div>
+<%--    <ul class="homeList">--%>
+<%--        <li><a href="/gallery/exhibitions">Lista galerii</a></li>--%>
+<%--    </ul>--%>
+<%--    <ul class="homeList">--%>
+<%--        <li><a href="/gallery/ranking">Ranking najczęściej zgłaszanych eksponatów</a></li>--%>
+<%--    </ul>--%>
 </sec:authorize>
 <sec:authorize access="hasRole('it')">
-    <div><a href="/notification/it/list">List zgłoszeń IT</a></div>
-    <div><a href="/notification/history">Historia zgłoszeń</a></div>
+        <ul class="homeList">
+            <li><a href="/notification/it/list">List zgłoszeń IT</a></li>
+        </ul>
+        <ul class="homeList">
+            <li><a href="/notification/history">Historia zgłoszeń</a></li>
+        </ul>
 </sec:authorize>
 <sec:authorize access="hasRole('workshop')">
-    <div><a href="/notification/workshop/list">List zgłoszeń Warsztat</a></div>
-    <div><a href="/notification/history">Historia zgłoszeń</a></div>
+        <ul class="homeList">
+            <li><a href="/notification/workshop/list">List zgłoszeń Warsztat</a></li>
+        </ul>
+        <ul class="homeList">
+            <li><a href="/notification/history">Historia zgłoszeń</a></li>
+        </ul>
 </sec:authorize>
 </body>
 </html>

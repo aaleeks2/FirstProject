@@ -9,14 +9,14 @@
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
-<h3><a href="/gallery/exhibitions">Wróć</a></h3>
+<h3><a class="backBtn" href="/gallery/exhibitions">Wróć</a></h3>
 <h2>${exhibition.name}</h2>
-<table>
-    <c:forEach items="${exhibitsOfExhibition}" var="exhibit" >
-        <tr>
-            <td>${exhibit.id}   ||  ${exhibit.name}     <a href="/gallery/notification?exhibitName=${exhibit.name}&exhibitionName=${exhibition.name}">Zgłoś</a></td>
-        </tr>
-    </c:forEach>
-</table>
+<c:forEach items="${exhibitsOfExhibition}" var="exhibit" >
+    <ul class="homeList">
+        <li>${exhibit.id}</li>
+        <li>${exhibit.name}</li>
+        <li><a href="/gallery/notification?exhibitName=${exhibit.name}&exhibitionName=${exhibition.name}">Zgłoś</a></li>
+    </ul>
+</c:forEach>
 </body>
 </html>

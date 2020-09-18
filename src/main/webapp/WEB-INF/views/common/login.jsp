@@ -20,7 +20,7 @@
         <label for="username" ><b>Username</b></label>
         <input  id="username" type="text" placeholder="Nazwa użytkownika" name="username" required>
         <label for="password"><b>Password</b></label>
-        <input id="password" type="password" name="password"/>
+        <input id="password" type="password" name="password" placeholder="Hasło"/>
         <input type="submit" value="Sign In"/>
     </div>
 </form:form>

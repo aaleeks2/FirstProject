@@ -10,43 +10,39 @@
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
-<h4><a href="/gallery/exhibits?exhibitionName=${exhibitionName}">Wróć</a></h4>
-<h3>${exhibit.name}</h3>
-<form:form modelAttribute="notification" method="post">
-    <span>Dział: <form:select path="department" items="${departments}"/></span><br>
-    <span>Typ usterki: <form:select path="type" items="${notificationTypes}"/></span><br>
-    <span>Opis usterki: <form:textarea path="description"/></span><br>
+<h4><a class="backBtn" href="/gallery/exhibits?exhibitionName=${exhibitionName}">Wróć</a></h4>
+<h2>${exhibit.name}</h2>
+<div id="addNotFormDiv">
+<form:form modelAttribute="notification" method="post" cssClass="addNotForm">
+    <label><b>Dział:</b></label>
+    <form:select path="department" items="${departments}"/>
+    <label><b>Typ usterki:</b></label>
+    <form:select path="type" items="${notificationTypes}"/>
+    <label><b>Opis usterki:</b></label>
+    <form:textarea path="description" />
     <form:hidden path="exhibit"/>
     <input type="submit" value="Wyślij">
+<%--    <span>Dział: <form:select path="department" items="${departments}"/></span><br>--%>
+<%--    <span>Typ usterki: <form:select path="type" items="${notificationTypes}"/></span><br>--%>
+<%--    <span>Opis usterki: <form:textarea path="description"/></span><br>--%>
+<%--    <form:hidden path="exhibit"/>--%>
+<%--    <input type="submit" value="Wyślij">--%>
 </form:form>
-<div id="notificationHistory">
+</div>
     <h3>Historia zgłoszeń</h3>
     <c:forEach items="${notificationHistory}" var="notification">
-        <table>
-            <tr>
-                <td>Numer identyfikacyjny zgłoszenia: ${notification.id}</td>
-            </tr>
-            <tr>
-                <td>Dział: ${notification.department}</td>
-            </tr>
-            <tr>
-                <td>Data zgłoszenia: ${notification.created}</td>
-            </tr>
-            <tr>
-                <td>Typ zgłoszenia: ${notification.type}</td>
-            </tr>
+        <ul class="homeList">
+            <li><b>Numer identyfikacyjny zgłoszenia:</b> ${notification.id}</li>
+            <li><b>Dział:</b> ${notification.department}</li>
+            <li><b>Data zgłoszenia:</b> ${notification.created}</li>
+            <li><b>Typ zgłoszenia:</b> ${notification.type}</li>
             <c:if test="${notification.taken == 1 && notification.closed==0}">
-                <tr>
-                    <td><div style="background-color: red">Zgłoszenie przejęte</div></td>
-                </tr>
+            <li style="background-color: red">Zgłoszenie przejęte</li>
             </c:if>
             <c:if test="${notification.closed==1}">
-                <tr>
-                    <td><div style="background-color: green">Zgłoszenie zamknięte</div></td>
-                </tr>
+            <li style="background-color: green">Zgłoszenie zamknięte</li>
             </c:if>
-        </table>
+        </ul>
     </c:forEach>
-</div>
 </body>
 </html>
