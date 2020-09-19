@@ -28,27 +28,13 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username, password, enabled from users where username = ?")
                 .authoritiesByUsernameQuery("select username, authority from authorities where username = ?");
-//                .usersByUsernameQuery( "select u.username, u.password, u.enabled from users u where u.username = ?");
-//                .withUser("user").password(passwordEncoder().encode("user")).roles("user")
-//                .and()
-//                .withUser("it").password(passwordEncoder().encode("it")).roles("it")
-//                .and()
-//                .withUser("workshop").password(passwordEncoder().encode("workshop")).roles("workshop");
-
-
-//        auth.inMemoryAuthentication()
-//                .withUser("it").password("{noop}it").roles("it")
-//                .and()
-//                .withUser("user").password("{noop}user").roles("user")
-//                .and()
-//                .withUser("workshop").password("{noop}workshop").roles("workshop");
-
-    }
+}
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").anonymous()
+                .antMatchers("/img/*").anonymous()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/gallery/**").hasRole("user")
                 .antMatchers("/notification/history").authenticated()
@@ -56,7 +42,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/notification/workshop/**").hasRole("workshop")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/homePage")
+                .formLogin().loginPage("/login").defaultSuccessUrl("/homePage", true)
                 .and()
                 .exceptionHandling().accessDeniedPage("/403");
     }

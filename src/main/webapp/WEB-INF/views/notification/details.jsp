@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,38 +13,24 @@
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
-<h3><a href="/notification/${notification.department}/list">Powrót</a></h3>
+<h3><a class="backBtn" href="/notification/${notification.department}/list">Powrót</a></h3>
 <h2>${notification.exhibit.name}</h2>
-<div class="flex-container">
-<table>
-    <tr>
-        <td>Galeria: ${notification.exhibit.exhibition.name}</td>
-    </tr>
-    <tr>
-        <td>Czas zgłoszenia: ${notification.created}</td>
-    </tr>
-    <tr>
-        <td>Rodzaj usterki: ${notification.type}</td>
-    </tr>
-    <tr>
-        <td>Opis usterki: ${notification.description}</td>
-    </tr>
+
+<ul class="homeList">
+        <li>Galeria: ${notification.exhibit.exhibition.name}</li>
+        <li>Czas zgłoszenia: ${notification.created}</li>
+        <li>Rodzaj usterki: ${notification.type}</li>
+        <li>Opis usterki: ${notification.description}</li>
     <c:if test="${notification.taken == 0}">
-        <tr>
-            <td><a id="takeLink" href="/notification/${notification.department}/taken?notId=${notification.id}" onclick="function x() {
+            <li><a id="takeLink" href="/notification/${notification.department}/taken?notId=${notification.id}&username=<sec:authentication property="principal.username"/>" onclick="function x() {
               var takeLink = $('#takeLink');
               takeLink.hide();
-            }">Przyjmij</a></td>
-        </tr>
+            }">Przyjmij</a></li>
     </c:if>
     <c:if test="${notification.taken == 1}">
-        <tr>
-            <td>
-                <a href="/notification/${notification.department}/close?notId=${notification.id}" onclick="confirm('Zamknij zgłoszenie')">ZAMKNIJ</a>
-            </td>
-        </tr>
+            <li><span>Zlecenie przejęte przez: <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span></li>
+            <li><a href="/notification/${notification.department}/close?notId=${notification.id}" onclick="return confirm('Zamknij zgłoszenie')">ZAMKNIJ</a></li>
     </c:if>
-</table>
-</div>
+</ul>
 </body>
 </html>

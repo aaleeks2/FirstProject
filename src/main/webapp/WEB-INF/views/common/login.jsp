@@ -9,16 +9,13 @@
     </style>
 </head>
 <body>
-<c:if test="${ param.error != null}">
-    <p>Błędne dane logowania.</p>
+<c:if test="${param.error != null}">
+    <p style="color: red">Błędne dane logowania.</p>
 </c:if>
 <form:form method="post">
-    <div id="imgContainer">
-        <img
-    </div>
     <div id="loginDiv">
         <label for="username" ><b>Username</b></label>
-        <input  id="username" type="text" placeholder="Nazwa użytkownika" name="username" required>
+        <input  id="username" type="text" placeholder="Nazwa użytkownika" name="username">
         <label for="password"><b>Password</b></label>
         <input id="password" type="password" name="password" placeholder="Hasło"/>
         <input type="submit" value="Sign In"/>

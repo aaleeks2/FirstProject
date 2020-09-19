@@ -9,15 +9,17 @@
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
-<table>
+<table id="historyTable">
     <tr>
-        <th>Nazwa</th>
-        <th>Ilość zgłoszeń</th>
+        <th>Galeria</th>
+        <th>Nazwa eksponatu</th>
+        <th>Liczba zgłoszeń</th>
     </tr>
-    <c:forEach items="${rankingExhibits}" var="notification">
+    <c:forEach items="${exhibitRanking}" var="exhibit">
         <tr>
-            <td>${notification.exibit.name}</td>
-            <td>${notification.exhibit}</td>
+            <td>${exhibit.exhibition.name}</td>
+            <td>${exhibit.name}</td>
+            <td>${exhibit.countNotifications()}</td>
         </tr>
     </c:forEach>
 </table>

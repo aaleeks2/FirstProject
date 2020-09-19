@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from users u where u.department<>'User'")
     List<User> findAllItAndWorkshopEmployees();
 
+    @Query("select u from users u where u.username=?1")
+    User findByUsername(String username);
 }

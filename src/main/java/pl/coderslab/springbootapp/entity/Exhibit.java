@@ -21,6 +21,24 @@ public class Exhibit {
     @OneToMany(mappedBy = "exhibit", fetch = FetchType.EAGER)
     private List<Notification> notifications = new ArrayList<>();
 
+    @Transient
+    private long notificationCount;
+
+    public int countNotifications(){
+        return this.notifications.size();
+    }
+
+    public Exhibit(long id, String name, Exhibition exhibition, long notificationCount){
+        this.id = id;
+        this.name = name;
+        this.exhibition = exhibition;
+        this.notificationCount = notificationCount;
+    }
+
+    public long getNotificationCount() {
+        return notificationCount;
+    }
+
     public Exhibit() {
     }
 

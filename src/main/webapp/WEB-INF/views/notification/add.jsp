@@ -15,11 +15,11 @@
 <div id="addNotFormDiv">
 <form:form modelAttribute="notification" method="post" cssClass="addNotForm">
     <label><b>Dział:</b></label>
-    <form:select path="department" items="${departments}"/>
+    <form:select path="department" items="${departments}"/><form:errors path="department" cssClass="error"/>
     <label><b>Typ usterki:</b></label>
-    <form:select path="type" items="${notificationTypes}"/>
+    <form:select path="type" items="${notificationTypes}"/><form:errors path="type" cssClass="error"/>
     <label><b>Opis usterki:</b></label>
-    <form:textarea path="description" />
+    <form:textarea path="description"/><form:errors path="description" cssClass="error"/>
     <form:hidden path="exhibit"/>
     <input type="submit" value="Wyślij">
 <%--    <span>Dział: <form:select path="department" items="${departments}"/></span><br>--%>
@@ -36,8 +36,11 @@
             <li><b>Dział:</b> ${notification.department}</li>
             <li><b>Data zgłoszenia:</b> ${notification.created}</li>
             <li><b>Typ zgłoszenia:</b> ${notification.type}</li>
+            <c:if test="${notification.taken == 0}">
+            <li>Zgłoszenie oczekujące</li>
+            </c:if>
             <c:if test="${notification.taken == 1 && notification.closed==0}">
-            <li style="background-color: red">Zgłoszenie przejęte</li>
+            <li style="background-color: red">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></li>
             </c:if>
             <c:if test="${notification.closed==1}">
             <li style="background-color: green">Zgłoszenie zamknięte</li>

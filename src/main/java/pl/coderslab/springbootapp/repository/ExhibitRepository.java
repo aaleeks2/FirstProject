@@ -16,4 +16,7 @@ public interface ExhibitRepository extends JpaRepository<Exhibit, Long> {
 
     Exhibit findByName(String exhibitName);
 
+    @Query("select e from Exhibit e order by e.notifications.size desc")
+    List<Exhibit> findAllCount();
+
 }

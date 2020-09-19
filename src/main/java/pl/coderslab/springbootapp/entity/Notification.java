@@ -13,14 +13,13 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
+    @NotEmpty(message = "Pole obowiązkowe")
     private String department;
 
-    @NotEmpty
+    @NotEmpty(message = "Pole obowiązkowe")
     private String type;
 
-    @Size(max = 155)
-    @NotEmpty
+    @Size(min=2, max = 155, message = "Nieodpowiednia liczba znaków")
     private String description;
 
     private int taken;
@@ -29,6 +28,10 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "exhibit")
     private Exhibit exhibit;
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -100,6 +103,14 @@ public class Notification {
 
     public void setClosed(int closed) {
         this.closed = closed;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

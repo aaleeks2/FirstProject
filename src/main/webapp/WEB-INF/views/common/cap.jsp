@@ -16,8 +16,4 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form></li>
     </ul>
-<%--    <form id="logoutBtn" action="/logout" method="post">--%>
-<%--        <input type="submit" value="Wyloguj">--%>
-<%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--    </form>--%>
 </sec:authorize>

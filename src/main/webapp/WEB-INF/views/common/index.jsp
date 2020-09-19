@@ -11,8 +11,10 @@
 <jsp:include page="cap.jsp"/>
 <sec:authorize access="hasRole('user')">
     <div class="container">
-        <img src="../../img/warszawa-centrum-nauki-kopernik.jpg">
         <a href="/gallery/exhibitions" id="imgBtn">Lista galerii</a>
+    </div>
+    <div class="container1">
+        <a href="/notification/ranking" id="imgBtn2">Ranking zgłoszeń eksponatów</a>
     </div>
 <%--    <ul class="homeList">--%>
 <%--        <li><a href="/gallery/exhibitions">Lista galerii</a></li>--%>

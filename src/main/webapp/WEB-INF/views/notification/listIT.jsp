@@ -9,35 +9,29 @@
 </head>
 <body>
 <jsp:include page="../common/cap.jsp"/>
+<c:if test="${count == 0}">
+    <h2>Brak zgłoszeń</h2>
+</c:if>
+<c:if test="${count > 0}">
 <h2>IT notification list</h2>
-<%--    TODO - have to create function, which will be granting acces to certain pages whether its workshop or IT--%>
     <c:forEach items="${notificationsIT}" var="notification">
-    <div class="flex-container">
-        <table>
-        <tr>
-            <td>${notification.id}</td>
-        </tr>
-        <tr>
-            <td>${notification.type}</td>
-        </tr>
-        <tr>
-            <td>${notification.created}</td>
-        </tr>
-        <tr>
-            <td><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></td>
-        </tr>
-        <tr>
-            <td>
+    <ul class="homeList">
+            <li>${notification.id}</li>
+            <li>${notification.type}</li>
+            <li>${notification.created}</li>
+            <li><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></li>
+            <li>
                 <c:if test="${notification.taken == 1 && notification.closed != 1}">
-                    <div style="color: green">Zgłoszenie przejęte</div>
+                    <span style="color: green">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span>
                 </c:if>
+            </li>
+            <li>
                 <c:if test="${notification.closed == 1}">
-                    <div style="background-color: green; color: black">Zgłoszenie zamknięte</div>
+                    <span style="background-color: green; color: black">Zgłoszenie zamknięte</span>
                 </c:if>
-            </td>
-        </tr>
-        </table>
-    </div>
+            </li>
+    </ul>
     </c:forEach>
+</c:if>
 </body>
 </html>

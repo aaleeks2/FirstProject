@@ -3,42 +3,51 @@ package pl.coderslab.springbootapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.springbootapp.entity.Exhibit;
 import pl.coderslab.springbootapp.entity.Notification;
-import pl.coderslab.springbootapp.repository.NotificationRepository;
+import pl.coderslab.springbootapp.entity.User;
+import pl.coderslab.springbootapp.repository.UserRepository;
+import pl.coderslab.springbootapp.service.ExhibitService;
+import pl.coderslab.springbootapp.service.NotificationService;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(path = "/notification")
 public class NotificationController {
 
     @Autowired
-    private NotificationRepository notificationRepository;
+    private NotificationService notificationService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ExhibitService exhibitService;
 
     @GetMapping(path = "/it/list", produces = "test/plain; charset=UTF-8")
     String notificationsListIT(Model model){
         String department = "it";
-        List<Notification> notificationsIT = notificationRepository.findAllByDepartmentNotClosed(department);
+        List<Notification> notificationsIT = notificationService.findAllByDepartmentNotClosed(department);
         model.addAttribute("notificationsIT", notificationsIT);
+        model.addAttribute("count", notificationsIT.size());
         return "notification/listIT";
     }
 
     @GetMapping(path = "/workshop/list", produces = "text/plain; charset=utf-8")
     String notificationListWorkshop(Model model){
         String department = "workshop";
-        List<Notification> notificationsWorkshop = notificationRepository.findAllByDepartmentNotClosed(department);
+        List<Notification> notificationsWorkshop = notificationService.findAllByDepartmentNotClosed(department);
+        model.addAttribute("count", notificationsWorkshop.size());
         model.addAttribute("notificationsWorkshop", notificationsWorkshop);
         return "notification/listWorkshop";
     }
 
     @GetMapping(path="/history")
     String viewHistoryByCreated(Model model){
-        List<Notification> historyOfNotifications = notificationRepository.findAllByCreated();
+        List<Notification> historyOfNotifications = notificationService.findAllByCreated();
         model.addAttribute("historyOfNotifications", historyOfNotifications);
         return "notification/history";
     }
@@ -46,54 +55,74 @@ public class NotificationController {
     @GetMapping(path = "/details", produces = "text/plain; charset=UTF-8")
     String notificationDetails(@RequestParam("notificationId") long id,
                                Model model){
-        Notification notification = notificationRepository.findById(id).get();
-        List<Notification> notificationsWorkshop = notificationRepository.findAllByDepartmentNotClosed(notification.getDepartment());
+        Notification notification = notificationService.findById(id).get();
+        List<Notification> notificationsWorkshop = notificationService.findAllByDepartmentNotClosed(notification.getDepartment());
         model.addAttribute("notification", notification);
         model.addAttribute("notificationsWorkshop", notificationsWorkshop);
         return "notification/details";
     }
 
     @GetMapping(path = "/it/taken")
-    String notificationItTaken(@RequestParam("notId") long id, Model model){
-        Notification notification = notificationRepository.findById(id).get();
+    String notificationItTaken(@RequestParam("notId") long id, @RequestParam("username") String username, Model model){
+        Notification notification = notificationService.findById(id).get();
+        User user = userRepository.findByUsername(username);
         notification.setTaken(1);
-        notificationRepository.save(notification);
-        List<Notification> notificationsIT = notificationRepository.findAllByDepartmentNotClosed(notification.getDepartment());
+        notification.setUser(user);
+        notificationService.save(notification);
+        List<Notification> notificationsIT = notificationService.findAllByDepartmentNotClosed(notification.getDepartment());
         model.addAttribute("notificationsIT", notificationsIT);
         model.addAttribute("notification", notification);
+        model.addAttribute("count", notificationsIT.size());
         return "notification/listIT";
     }
 
     @GetMapping(path = "it/close")
     String closeNotificationIt(@RequestParam("notId") long id, Model model){
-        Notification notification = notificationRepository.findById(id).get();
+        Notification notification = notificationService.findById(id).get();
         notification.setClosed(1);
-        notificationRepository.save(notification);
-        List<Notification> notificationsIt = notificationRepository.findAllByDepartmentNotClosed(notification.getDepartment());
+        notificationService.save(notification);
+        List<Notification> notificationsIt = notificationService.findAllByDepartmentNotClosed(notification.getDepartment());
         model.addAttribute("notificationsIT", notificationsIt);
         model.addAttribute("notification", notification);
+        model.addAttribute("count", notificationsIt.size());
         return "notification/listIT";
     }
 
     @GetMapping(path = "/workshop/taken")
-    String notificationWorkshopTaken(@RequestParam("notId") long id, Model model){
-        Notification notification = notificationRepository.findById(id).get();
+    String notificationWorkshopTaken(@RequestParam("notId") long id, @RequestParam("username") String username, Model model){
+        Notification notification = notificationService.findById(id).get();
+        User user = userRepository.findByUsername(username);
         notification.setTaken(1);
-        notificationRepository.save(notification);
-        List<Notification> notificationsWorkshop = notificationRepository.findAllByDepartmentNotClosed(notification.getDepartment());
+        notification.setUser(user);
+        notificationService.save(notification);
+        List<Notification> notificationsWorkshop = notificationService.findAllByDepartmentNotClosed(notification.getDepartment());
         model.addAttribute("notificationsWorkshop", notificationsWorkshop);
         model.addAttribute("notification", notification);
+        model.addAttribute("count", notificationsWorkshop.size());
         return "notification/listWorkshop";
     }
 
     @GetMapping(path = "workshop/close")
     String closeNotificationWorkshop(@RequestParam("notId") long id, Model model){
-        Notification notification = notificationRepository.findById(id).get();
+        Notification notification = notificationService.findById(id).get();
         notification.setClosed(1);
-        notificationRepository.save(notification);
-        List<Notification> notificationsWorkshop = notificationRepository.findAllByDepartmentNotClosed(notification.getDepartment());
+        notificationService.save(notification);
+        List<Notification> notificationsWorkshop = notificationService.findAllByDepartmentNotClosed(notification.getDepartment());
         model.addAttribute("notificationsWorkshop", notificationsWorkshop);
         model.addAttribute("notification", notification);
+        model.addAttribute("count", notificationsWorkshop.size());
         return "notification/listWorkshop";
+    }
+
+    @GetMapping(path = "/ranking")
+    String ranking(Model model){
+//        List<Exhibit> exhibitRanking = exhibitService.findAll();
+//        Map<Exhibit, Integer> exhibitIntegerMap = exhibitRanking.stream()
+//                .collect(Collectors.toMap(x -> x, x -> x.countNotifications()));
+        List<Exhibit> exhibitRanking = exhibitService.findAllCount();
+        Map<Exhibit, Integer> exhibitIntegerMap = exhibitRanking.stream()
+                .collect(Collectors.toMap(x -> x, x -> x.countNotifications()));
+        model.addAttribute("exhibitRanking", exhibitRanking);
+        return "exhibits/ranking";
     }
 }
