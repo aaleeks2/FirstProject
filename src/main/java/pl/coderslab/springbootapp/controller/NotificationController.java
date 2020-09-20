@@ -10,9 +10,7 @@ import pl.coderslab.springbootapp.entity.User;
 import pl.coderslab.springbootapp.repository.UserRepository;
 import pl.coderslab.springbootapp.service.ExhibitService;
 import pl.coderslab.springbootapp.service.NotificationService;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(path = "/notification")
@@ -116,12 +114,7 @@ public class NotificationController {
 
     @GetMapping(path = "/ranking")
     String ranking(Model model){
-//        List<Exhibit> exhibitRanking = exhibitService.findAll();
-//        Map<Exhibit, Integer> exhibitIntegerMap = exhibitRanking.stream()
-//                .collect(Collectors.toMap(x -> x, x -> x.countNotifications()));
         List<Exhibit> exhibitRanking = exhibitService.findAllCount();
-        Map<Exhibit, Integer> exhibitIntegerMap = exhibitRanking.stream()
-                .collect(Collectors.toMap(x -> x, x -> x.countNotifications()));
         model.addAttribute("exhibitRanking", exhibitRanking);
         return "exhibits/ranking";
     }
