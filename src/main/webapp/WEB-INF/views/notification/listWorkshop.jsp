@@ -17,16 +17,17 @@
     <c:forEach items="${notificationsWorkshop}" var="notification">
         <ul class="homeList">
             <li>${notification.id}</li>
+            <li>${notification.exhibit.name}</li>
             <li>${notification.type}</li>
             <li>${notification.created}</li>
             <li><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></li>
             <li>
-                <c:if test="${notification.taken == 1}">
-                    <span style="color: green">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span>
-                </c:if>
-                <c:if test="${notification.closed == 1}">
-                    <span style="background-color: green; color: black">Zgłoszenie zamknięte</span>
-                </c:if>
+        <c:if test="${notification.taken == 1}">
+            <span style="color: green">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span>
+        </c:if>
+        <c:if test="${notification.closed == 1}">
+            <span style="background-color: green; color: black">Zgłoszenie zamknięte</span>
+        </c:if>
             </li>
         </ul>
     </c:forEach>

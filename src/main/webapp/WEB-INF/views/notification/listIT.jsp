@@ -15,22 +15,23 @@
 <c:if test="${count > 0}">
 <h2>IT notification list</h2>
     <c:forEach items="${notificationsIT}" var="notification">
-    <ul class="homeList">
+        <ul class="homeList">
             <li>${notification.id}</li>
+            <li>${notification.exhibit.name}</li>
             <li>${notification.type}</li>
             <li>${notification.created}</li>
             <li><a href="/notification/details?notificationId=${notification.id}">Szczegóły</a></li>
             <li>
-                <c:if test="${notification.taken == 1 && notification.closed != 1}">
-                    <span style="color: green">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span>
-                </c:if>
+        <c:if test="${notification.taken == 1 && notification.closed != 1}">
+            <span style="color: green">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></span>
+        </c:if>
             </li>
             <li>
-                <c:if test="${notification.closed == 1}">
-                    <span style="background-color: green; color: black">Zgłoszenie zamknięte</span>
-                </c:if>
+        <c:if test="${notification.closed == 1}">
+            <span style="background-color: green; color: black">Zgłoszenie zamknięte</span>
+        </c:if>
             </li>
-    </ul>
+        </ul>
     </c:forEach>
 </c:if>
 </body>

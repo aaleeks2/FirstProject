@@ -35,16 +35,4 @@ public class Exhibition {
     public List<Exhibit> getExhibits() {
         return exhibits;
     }
-
-    public void setExhibits(List<Exhibit> exhibits) {
-        this.exhibits = exhibits;
-    }
-
-    @Override
-    public String toString() {
-        return "Exhibition{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

@@ -25,11 +25,7 @@ public class ExhibitService {
         return exhibitRepository.findByName(exhibitName);
     }
 
-    public List<Exhibit> findAll() {
-        return exhibitRepository.findAll();
-    }
-
-    public List<Exhibit> findAllCount(){
+    public List<Exhibit> findAllCount() {
         return exhibitRepository.findAllCount();
     }
 }

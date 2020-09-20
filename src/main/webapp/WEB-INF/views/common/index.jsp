@@ -16,28 +16,22 @@
     <div class="container1">
         <a href="/notification/ranking" id="imgBtn2">Ranking zgłoszeń eksponatów</a>
     </div>
-<%--    <ul class="homeList">--%>
-<%--        <li><a href="/gallery/exhibitions">Lista galerii</a></li>--%>
-<%--    </ul>--%>
-<%--    <ul class="homeList">--%>
-<%--        <li><a href="/gallery/ranking">Ranking najczęściej zgłaszanych eksponatów</a></li>--%>
-<%--    </ul>--%>
 </sec:authorize>
 <sec:authorize access="hasRole('it')">
-        <ul class="homeList">
-            <li><a href="/notification/it/list">List zgłoszeń IT</a></li>
-        </ul>
-        <ul class="homeList">
-            <li><a href="/notification/history">Historia zgłoszeń</a></li>
-        </ul>
+    <ul class="homeList">
+        <li><a href="/notification/it/list">List zgłoszeń IT</a></li>
+    </ul>
+    <ul class="homeList">
+        <li><a href="/notification/history">Historia zgłoszeń</a></li>
+    </ul>
 </sec:authorize>
 <sec:authorize access="hasRole('workshop')">
-        <ul class="homeList">
-            <li><a href="/notification/workshop/list">List zgłoszeń Warsztat</a></li>
-        </ul>
-        <ul class="homeList">
-            <li><a href="/notification/history">Historia zgłoszeń</a></li>
-        </ul>
+    <ul class="homeList">
+        <li><a href="/notification/workshop/list">List zgłoszeń Warsztat</a></li>
+    </ul>
+    <ul class="homeList">
+        <li><a href="/notification/history">Historia zgłoszeń</a></li>
+    </ul>
 </sec:authorize>
 </body>
 </html>

@@ -23,6 +23,7 @@ public class Notification {
     private String description;
 
     private int taken;
+
     private int closed;
 
     @ManyToOne
@@ -96,7 +97,6 @@ public class Notification {
         this.taken = taken;
     }
 
-
     public int getClosed() {
         return closed;
     }
@@ -111,16 +111,5 @@ public class Notification {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Notification{" +
-                "id=" + id +
-                ", department='" + department + '\'' +
-                ", type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                ", exhibit=" + exhibit +
-                '}';
     }
 }

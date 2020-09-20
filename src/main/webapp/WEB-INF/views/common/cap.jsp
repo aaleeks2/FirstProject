@@ -11,9 +11,11 @@
         <li><sec:authorize access="hasRole('user')"><a href="/notification/history">Historia zgłoszeń</a></sec:authorize></li>
         <li class="plainText">Użytkownik: <sec:authentication property="principal.username"/></li>
         <li class="plainText">Rola: <sec:authentication property="principal.authorities"/></li>
-        <li><form id="logoutBtn" action="/logout" method="post">
-            <input type="submit" value="Wyloguj">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form></li>
+        <li>
+            <form id="logoutBtn" action="/logout" method="post">
+                <input type="submit" value="Wyloguj">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </li>
     </ul>
 </sec:authorize>

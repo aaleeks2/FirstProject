@@ -1,7 +1,6 @@
 package pl.coderslab.springbootapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,9 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.springbootapp.entity.Exhibit;
 import pl.coderslab.springbootapp.entity.Exhibition;
 import pl.coderslab.springbootapp.entity.Notification;
-import pl.coderslab.springbootapp.repository.ExhibitRepository;
-import pl.coderslab.springbootapp.repository.ExhibitionRepository;
-import pl.coderslab.springbootapp.repository.NotificationRepository;
 import pl.coderslab.springbootapp.service.ExhibitService;
 import pl.coderslab.springbootapp.service.ExhibitionService;
 import pl.coderslab.springbootapp.service.NotificationService;
@@ -37,7 +33,8 @@ public class GalleryController {
     }
 
     @GetMapping(path = "/exhibits", produces = "text/plain; charset = UTF-8")
-    public String viewExhibitionsExhibitsAnimator(Model model, @RequestParam("exhibitionName") String exhibitionName){
+    public String viewExhibitionsExhibitsAnimator(@RequestParam("exhibitionName") String exhibitionName,
+                                                  Model model){
         Exhibition exhibition = exhibitionService.findByName(exhibitionName);
         List<Exhibit> exhibits = exhibitService.findAllByExhibitionName(exhibitionName);
         model.addAttribute("exhibition", exhibition);
@@ -46,8 +43,9 @@ public class GalleryController {
     }
 
     @GetMapping(path = "/notification", produces = "text/html; charset=UTF-8")
-    String notificationForm(Model model, @RequestParam("exhibitName") String exhibitName,
-                            @RequestParam("exhibitionName") String exhibitionName){
+    String notificationForm(@RequestParam("exhibitName") String exhibitName,
+                            @RequestParam("exhibitionName") String exhibitionName,
+                            Model model){
         Exhibit exhibit = exhibitService.findByName(exhibitName);
         List<Notification> notificationsHistory = notificationService.findAllByExhibit(exhibitName);
         Notification notification = new Notification();
@@ -60,7 +58,9 @@ public class GalleryController {
     }
 
     @PostMapping(path = "/notification", produces = "text/plain; charset=UTF-8")
-    String createNotification(@Valid Notification notification, BindingResult br, Model model){
+    String createNotification(@Valid Notification notification,
+                              BindingResult br,
+                              Model model){
         if(br.hasErrors()){
             return "/notification/add";
         }else {

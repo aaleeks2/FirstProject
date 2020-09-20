@@ -61,7 +61,9 @@ public class NotificationController {
     }
 
     @GetMapping(path = "/it/taken")
-    String notificationItTaken(@RequestParam("notId") long id, @RequestParam("username") String username, Model model){
+    String notificationItTaken(@RequestParam("notId") long id,
+                               @RequestParam("username") String username,
+                               Model model){
         Notification notification = notificationService.findById(id).get();
         User user = userRepository.findByUsername(username);
         notification.setTaken(1);
@@ -75,7 +77,8 @@ public class NotificationController {
     }
 
     @GetMapping(path = "it/close")
-    String closeNotificationIt(@RequestParam("notId") long id, Model model){
+    String closeNotificationIt(@RequestParam("notId") long id,
+                               Model model){
         Notification notification = notificationService.findById(id).get();
         notification.setClosed(1);
         notificationService.save(notification);
@@ -87,7 +90,9 @@ public class NotificationController {
     }
 
     @GetMapping(path = "/workshop/taken")
-    String notificationWorkshopTaken(@RequestParam("notId") long id, @RequestParam("username") String username, Model model){
+    String notificationWorkshopTaken(@RequestParam("notId") long id,
+                                     @RequestParam("username") String username,
+                                     Model model){
         Notification notification = notificationService.findById(id).get();
         User user = userRepository.findByUsername(username);
         notification.setTaken(1);
@@ -101,7 +106,8 @@ public class NotificationController {
     }
 
     @GetMapping(path = "workshop/close")
-    String closeNotificationWorkshop(@RequestParam("notId") long id, Model model){
+    String closeNotificationWorkshop(@RequestParam("notId") long id,
+                                     Model model){
         Notification notification = notificationService.findById(id).get();
         notification.setClosed(1);
         notificationService.save(notification);

@@ -22,29 +22,24 @@
     <form:textarea path="description"/><form:errors path="description" cssClass="error"/>
     <form:hidden path="exhibit"/>
     <input type="submit" value="Wyślij">
-<%--    <span>Dział: <form:select path="department" items="${departments}"/></span><br>--%>
-<%--    <span>Typ usterki: <form:select path="type" items="${notificationTypes}"/></span><br>--%>
-<%--    <span>Opis usterki: <form:textarea path="description"/></span><br>--%>
-<%--    <form:hidden path="exhibit"/>--%>
-<%--    <input type="submit" value="Wyślij">--%>
 </form:form>
 </div>
-    <h3>Historia zgłoszeń</h3>
+<h3>Historia zgłoszeń</h3>
     <c:forEach items="${notificationHistory}" var="notification">
         <ul class="homeList">
             <li><b>Numer identyfikacyjny zgłoszenia:</b> ${notification.id}</li>
             <li><b>Dział:</b> ${notification.department}</li>
             <li><b>Data zgłoszenia:</b> ${notification.created}</li>
             <li><b>Typ zgłoszenia:</b> ${notification.type}</li>
-            <c:if test="${notification.taken == 0}">
+        <c:if test="${notification.taken == 0}">
             <li>Zgłoszenie oczekujące</li>
-            </c:if>
-            <c:if test="${notification.taken == 1 && notification.closed==0}">
+        </c:if>
+        <c:if test="${notification.taken == 1 && notification.closed==0}">
             <li style="background-color: red">Zgłoszenie przejęte przez <b>${notification.user.name} ${notification.user.surname} ${notification.user.phoneNumber}</b></li>
-            </c:if>
-            <c:if test="${notification.closed==1}">
+        </c:if>
+        <c:if test="${notification.closed==1}">
             <li style="background-color: green">Zgłoszenie zamknięte</li>
-            </c:if>
+        </c:if>
         </ul>
     </c:forEach>
 </body>

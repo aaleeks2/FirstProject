@@ -38,8 +38,4 @@ public class NotificationService {
     public List<Notification> findAllByExhibit(String exhibitName) {
         return notificationRepository.findAllByExhibit(exhibitName);
     }
-
-//    public List<Notification> findAllExhibitsByCount() {
-//        return notificationRepository.findAllExhibitsByCount();
-//    }
 }

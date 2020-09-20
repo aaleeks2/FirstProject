@@ -1,8 +1,6 @@
 package pl.coderslab.springbootapp.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity(name = "authorities")
 public class Role {
@@ -40,14 +38,5 @@ public class Role {
     }
 
     public Role() {
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", authority='" + authority + '\'' +
-                ", username='" + username + '\'' +
-                '}';
     }
 }

@@ -18,13 +18,13 @@
         <th>OPIS</th>
     </tr>
     <c:forEach items="${historyOfNotifications}" var="notification">
-        <tr>
-            <td>${notification.created}</td>
-            <td>${notification.id}</td>
-            <td>${notification.exhibit.name}</td>
-            <td>${notification.type}</td>
-            <td>${notification.description}</td>
-        </tr>
+    <tr>
+        <td>${notification.created}</td>
+        <td>${notification.id}</td>
+        <td>${notification.exhibit.name}</td>
+        <td>${notification.type}</td>
+        <td>${notification.description}</td>
+    </tr>
     </c:forEach>
 </table>
 </body>

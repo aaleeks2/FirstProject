@@ -16,11 +16,11 @@
         <th>Liczba zgłoszeń</th>
     </tr>
     <c:forEach items="${exhibitRanking}" var="exhibit">
-        <tr>
-            <td>${exhibit.exhibition.name}</td>
-            <td>${exhibit.name}</td>
-            <td>${exhibit.countNotifications()}</td>
-        </tr>
+    <tr>
+        <td>${exhibit.exhibition.name}</td>
+        <td>${exhibit.name}</td>
+        <td>${exhibit.countNotifications()}</td>
+    </tr>
     </c:forEach>
 </table>
 </body>

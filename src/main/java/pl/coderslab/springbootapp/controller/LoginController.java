@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.coderslab.springbootapp.entity.User;
-import pl.coderslab.springbootapp.repository.UserRepository;
 import pl.coderslab.springbootapp.service.UserService;
 
 import java.util.List;
