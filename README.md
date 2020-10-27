@@ -8,5 +8,4 @@ Projekt oparty jest o następujące funkcjonalności:
 * JSP
 * MySQL
 * HTML i CSS
-
 W dalszym ciągu kod jest poprawiany i rozwijany, nie jest to projekt zakończony. Aktualnie poprawiana jest konfiguracja Spring Security.
