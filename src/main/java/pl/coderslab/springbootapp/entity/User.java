@@ -13,35 +13,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @NotEmpty
-    @Size(min = 2, max = 20)
     private String name;
-
-    @NotEmpty
-    @Size(min=2, max = 50)
     private String surname;
-
-    @NotEmpty
-    @Size(min=2, max=15)
     private String username;
-
-    @Email
     private String email;
-
-    private int enabled;
-
+    private boolean active;
     private int phoneNumber;
-
     @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
-
-    @NotEmpty
-    @Size(min = 5, max=255)
     private String password;
-
-    @NotEmpty
     private String department;
+    private String roles;
 
     public long getId() {
         return id;
@@ -79,8 +61,12 @@ public class User {
         return username;
     }
 
-    public int getEnabled() {
-        return enabled;
+    public boolean isActive() {
+        return active;
+    }
+
+    public String getRoles() {
+        return roles;
     }
 
     public int getPhoneNumber() {

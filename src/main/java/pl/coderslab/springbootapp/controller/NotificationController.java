@@ -65,7 +65,7 @@ public class NotificationController {
                                @RequestParam("username") String username,
                                Model model){
         Notification notification = notificationService.findById(id).get();
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).get();
         notification.setTaken(1);
         notification.setUser(user);
         notificationService.save(notification);
@@ -94,7 +94,7 @@ public class NotificationController {
                                      @RequestParam("username") String username,
                                      Model model){
         Notification notification = notificationService.findById(id).get();
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).get();
         notification.setTaken(1);
         notification.setUser(user);
         notificationService.save(notification);
