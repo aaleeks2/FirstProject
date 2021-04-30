@@ -9,4 +9,3 @@ Main functions are:
 * also created a few pure informational things like fault register
 
 For now I don't have enough time to work on this project as much as I would like to, but as soon as I find few hours, I definitely will make some moves here.
-Thanks for reading this and sorry for hurting your eyes with my bad London. xo
