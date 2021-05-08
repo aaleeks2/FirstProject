@@ -13,7 +13,7 @@
     <tr>
         <th>DATA</th>
         <th>ID</th>
-        <th>ESKPONAT</th>
+        <th>EKSPONAT</th>
         <th>TYP</th>
         <th>OPIS</th>
     </tr>
