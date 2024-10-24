@@ -7,5 +7,3 @@ Main functions are:
 * (from the IT/Workshop department worker site) catch the notification and let others know that you're going to deal with this fault and finally fix the issue.
 * in addition, in this app (on both sites) you can find phone numbers or emails to the TroubleShooting department workers, which improves the intel flow in the company and makes it easier to cooperate,
 * also created a few pure informational things like fault register
-
-For now I don't have enough time to work on this project as much as I would like to, but as soon as I find few hours, I definitely will make some moves here.
